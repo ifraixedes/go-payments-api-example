@@ -1,0 +1,11 @@
+{
+  "name": "docs-api",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "description": "This contains the NPM modules which are the tools used for working with the OpenAPI specs.",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "swagger-merger": "^1.4.3"
+  }
+}
