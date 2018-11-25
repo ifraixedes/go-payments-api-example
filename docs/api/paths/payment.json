@@ -8,17 +8,7 @@
         "$ref": "../headers/accept-api-v1.json"
       },
       {
-        "name": "paymentID",
-        "in": "path",
-        "description": "The ID of the payment to get",
-        "required": true,
-        "style": "label",
-        "schema": {
-          "title": "UUID",
-          "type": "string",
-          "pattern": "^[\\da-f]{8,8}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{12,12}$/i"
-        },
-        "example": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43"
+        "$ref": "../parameters/path/payment-id.json"
       },
       {
         "$ref": "../parameters/query/fields.json"
@@ -54,6 +44,53 @@
       },
       "404": {
         "$ref": "../responses/404.json"
+      },
+      "422": {
+        "$ref": "../responses/422.json"
+      },
+      "500" : {
+        "$ref": "../responses/500.json"
+      },
+      "default" : {
+        "$ref": "../responses/default.json"
+      }
+    }
+  },
+  "put": {
+    "tags": [ "payment" ],
+    "summary": "Update an existing payment.",
+    "description": "Update an existing payment if the version indicated in the header If-Match matches with the last one stored.",
+    "operationId": "paymentUpdate",
+    "parameters": [
+      {
+        "$ref": "../headers/accept-api-v1.json"
+      },
+      {
+        "$ref": "../headers/if-match-single-num-version.json"
+      },
+      {
+        "$ref": "../parameters/path/payment-id.json"
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../schemas/payment.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "204": {
+        "description": "Successful update."
+      },
+      "404": {
+        "$ref": "../responses/404.json"
+      },
+      "412": {
+        "$ref": "../responses/412.json"
       },
       "422": {
         "$ref": "../responses/422.json"

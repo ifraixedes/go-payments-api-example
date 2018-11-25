@@ -1,0 +1,25 @@
+{
+  "description": "Operation cannot be performed because one of the preconditions has failed.",
+  "headers": {
+    "Content-Length": {
+      "description": "The length of the content.",
+      "schema": {
+        "type": "integer",
+        "format": "uint64"
+      }
+    }
+  },
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/error-envelop.json"
+      },
+      "example": {
+        "error": {
+          "code": "ConflictUpdateOldVersionPayment",
+          "detail": "The payment couldn't be updated because the current version is higher than update operation."
+        }
+      }
+    }
+  }
+}
