@@ -25,6 +25,10 @@
     "/payments": {
       "summary": "Operations performed on set of payments.",
       "$ref": "paths/payments.json"
+    },
+    "/payments/{paymentID}": {
+      "summary": "Operations performed on a payment.",
+      "$ref": "paths/payment.json"
     }
   },
   "components": {

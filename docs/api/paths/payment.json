@@ -1,0 +1,69 @@
+{
+  "get": {
+    "tags": [ "payment" ],
+    "summary": "Get a payment.",
+    "operationId": "paymentGet",
+    "parameters": [
+      {
+        "$ref": "../headers/accept-api-v1.json"
+      },
+      {
+        "name": "paymentID",
+        "in": "path",
+        "description": "The ID of the payment to get",
+        "required": true,
+        "style": "label",
+        "schema": {
+          "title": "UUID",
+          "type": "string",
+          "pattern": "^[\\da-f]{8,8}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{12,12}$/i"
+        },
+        "example": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43"
+      },
+      {
+        "$ref": "../parameters/query/fields.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "A payment.",
+        "headers": {
+          "Content-Length": {
+            "description": "The length of the content.",
+            "schema": {
+              "type": "integer",
+              "format": "uint64"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "$ref": "../schemas/payment.json"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "$ref": "../responses/404.json"
+      },
+      "422": {
+        "$ref": "../responses/422.json"
+      },
+      "500" : {
+        "$ref": "../responses/500.json"
+      },
+      "default" : {
+        "$ref": "../responses/default.json"
+      }
+    }
+  }
+}
