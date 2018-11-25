@@ -21,6 +21,12 @@
       }
     }
   ],
+  "paths": {
+    "/payments": {
+      "summary": "Operations performed on set of payments.",
+      "$ref": "paths/payments.json"
+    }
+  },
   "components": {
     "responses": {
       "406": {

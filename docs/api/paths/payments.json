@@ -1,0 +1,77 @@
+{
+  "get": {
+    "tags": [ "payment" ],
+    "summary": "Get a list of payments.",
+    "operationId": "paymentsGet",
+    "parameters": [
+      {
+        "$ref": "../headers/accept-api-v1.json"
+      },
+      {
+        "$ref": "../parameters/query/fields.json"
+      },
+      {
+        "$ref": "../parameters/query/filter.json"
+      },
+      {
+        "$ref": "../parameters/query/order.json"
+      },
+      {
+        "$ref": "../parameters/query/page.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "List of payments.",
+        "headers": {
+          "Content-Length": {
+            "description": "The length of the content.",
+            "schema": {
+              "type": "integer",
+              "format": "uint64"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "data",
+                "meta"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "../schemas/payment.json"
+                  }
+                },
+                "meta": {
+                  "type": "object",
+                  "required": [
+                    "total"
+                  ],
+                  "properties": {
+                    "total": {
+                      "$ref": "../schemas/meta/total.json"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "422": {
+        "$ref": "../responses/422.json"
+      },
+      "500" : {
+        "$ref": "../responses/500.json"
+      },
+      "default" : {
+        "$ref": "../responses/default.json"
+      }
+    }
+  }
+}
