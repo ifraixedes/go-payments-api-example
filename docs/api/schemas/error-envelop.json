@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "title": "Error envelop",
+  "description": "Envelop of an error in an error response (status code 4XX or 5XX).",
+  "required": [
+    "error"
+  ],
+  "properties": {
+    "error": {
+      "$ref": "error.json"
+    }
+  }
+}

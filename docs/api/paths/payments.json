@@ -1,0 +1,149 @@
+{
+  "get": {
+    "tags": [ "payment" ],
+    "summary": "Get a list of payments.",
+    "operationId": "paymentsGet",
+    "parameters": [
+      {
+        "$ref": "../headers/accept-api-v1.json"
+      },
+      {
+        "$ref": "../parameters/query/fields.json"
+      },
+      {
+        "$ref": "../parameters/query/filter.json"
+      },
+      {
+        "$ref": "../parameters/query/order.json"
+      },
+      {
+        "$ref": "../parameters/query/page.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "List of payments.",
+        "headers": {
+          "Content-Length": {
+            "description": "The length of the content.",
+            "schema": {
+              "type": "integer",
+              "format": "uint64"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "data",
+                "meta"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "../schemas/payment.json"
+                  }
+                },
+                "meta": {
+                  "type": "object",
+                  "required": [
+                    "total"
+                  ],
+                  "properties": {
+                    "total": {
+                      "$ref": "../schemas/meta/total.json"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "422": {
+        "$ref": "../responses/422.json"
+      },
+      "500" : {
+        "$ref": "../responses/500.json"
+      },
+      "default" : {
+        "$ref": "../responses/default.json"
+      }
+    }
+  },
+  "post": {
+    "tags": [ "payment" ],
+    "summary": "Create a new payment.",
+    "operationId": "paymentsPost",
+    "parameters": [
+      {
+        "$ref": "../headers/accept-api-v1.json"
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../schemas/payment.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "ID of the new payment.",
+        "headers": {
+          "Content-Length": {
+            "description": "The length of the content.",
+            "schema": {
+              "type": "integer",
+              "format": "uint64"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[\\da-f]{8,8}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{12,12}$/i"
+                    }
+                  }
+                }
+              }
+            },
+            "example": {
+              "data": {
+                "id": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43"
+              }
+            }
+          }
+        }
+      },
+      "422": {
+        "$ref": "../responses/422.json"
+      },
+      "500" : {
+        "$ref": "../responses/500.json"
+      },
+      "default" : {
+        "$ref": "../responses/default.json"
+      }
+    }
+  }
+}

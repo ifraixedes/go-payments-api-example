@@ -1,0 +1,25 @@
+{
+  "description": "resource not found",
+  "headers": {
+    "Content-Length": {
+      "description": "The length of the content.",
+      "schema": {
+        "type": "integer",
+        "format": "uint64"
+      }
+    }
+  },
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/error-envelop.json"
+      },
+      "example": {
+        "error": {
+          "code": "NotFoundPayment",
+          "detail": "There isn't any payment with the provided ID."
+        }
+      }
+    }
+  }
+}

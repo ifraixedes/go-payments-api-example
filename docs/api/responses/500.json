@@ -1,0 +1,25 @@
+{
+  "description": "Internal error, client should retry the last request after some time.\nThis error is returned when the application cannot recover by itself from it and cannot tell the clients what to do for so.",
+  "headers": {
+    "Content-Length": {
+      "description": "The length of the content.",
+      "schema": {
+        "type": "integer",
+        "format": "uint64"
+      }
+    }
+  },
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/error-envelop.json"
+      },
+      "example": {
+        "error": {
+          "code": "InternalError",
+          "detail": "An application internal error has happened."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Accept",
+  "in": "header",
+  "description": "API Version 1 + JSON, the values is fixed according the pattern of property of the schema.",
+  "required": true,
+  "schema": {
+    "type": "string",
+    "pattern": "^application\/vnd\\.payments\\.v1\\+json$"
+  }
+}

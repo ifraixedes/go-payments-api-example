@@ -1,0 +1,22 @@
+{
+  "name": "fields",
+  "in": "query",
+  "description": "Comma separated values which are the names of the item fields to only be returned per each item of the collection.",
+  "allowReserved": true,
+  "schema": {
+    "title": "Specify name of the fields of the items",
+    "description": "Name of the fields of an item which belongs to the collection, for specifying that only them must be present on the response. Each field is separated by ','.",
+    "type": "string",
+    "pattern": "/[a-z_][\\w_.]+(,[a-z_][\\w_.])*/i"
+  },
+  "examples": {
+    "singleField": {
+      "summary": "Requesting only amount field.",
+      "value": "amount"
+    },
+    "multiField": {
+      "summary": "Requesting amount, creation time and owner ID fields.",
+      "value": "amount,createdAt,ownerID"
+    }
+  }
+}

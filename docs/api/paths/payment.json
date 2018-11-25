@@ -1,0 +1,140 @@
+{
+  "get": {
+    "tags": [ "payment" ],
+    "summary": "Get a payment.",
+    "operationId": "paymentGet",
+    "parameters": [
+      {
+        "$ref": "../headers/accept-api-v1.json"
+      },
+      {
+        "$ref": "../parameters/path/payment-id.json"
+      },
+      {
+        "$ref": "../parameters/query/fields.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "A payment.",
+        "headers": {
+          "Content-Length": {
+            "description": "The length of the content.",
+            "schema": {
+              "type": "integer",
+              "format": "uint64"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "$ref": "../schemas/payment.json"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "$ref": "../responses/404.json"
+      },
+      "422": {
+        "$ref": "../responses/422.json"
+      },
+      "500" : {
+        "$ref": "../responses/500.json"
+      },
+      "default" : {
+        "$ref": "../responses/default.json"
+      }
+    }
+  },
+  "put": {
+    "tags": [ "payment" ],
+    "summary": "Update an existing payment.",
+    "description": "Update an existing payment if the version indicated in the header If-Match matches with the last one stored.",
+    "operationId": "paymentUpdate",
+    "parameters": [
+      {
+        "$ref": "../headers/accept-api-v1.json"
+      },
+      {
+        "$ref": "../headers/if-match-single-num-version.json"
+      },
+      {
+        "$ref": "../parameters/path/payment-id.json"
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../schemas/payment.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "204": {
+        "description": "Successful update."
+      },
+      "404": {
+        "$ref": "../responses/404.json"
+      },
+      "412": {
+        "$ref": "../responses/412.json"
+      },
+      "422": {
+        "$ref": "../responses/422.json"
+      },
+      "500" : {
+        "$ref": "../responses/500.json"
+      },
+      "default" : {
+        "$ref": "../responses/default.json"
+      }
+    }
+  },
+  "delete": {
+    "tags": [ "payment" ],
+    "summary": "Delete a payment.",
+    "description": "Delete an existing payment if the version indicated in the header If-Match matches with the last one stored.",
+    "operationId": "paymentDelete",
+    "parameters": [
+      {
+        "$ref": "../headers/accept-api-v1.json"
+      },
+      {
+        "$ref": "../headers/if-match-single-num-version.json"
+      },
+      {
+        "$ref": "../parameters/path/payment-id.json"
+      }
+    ]
+  },
+  "responses": {
+    "204": {
+      "description": "Successful update."
+    },
+    "404": {
+      "$ref": "../responses/404.json"
+    },
+    "412": {
+      "$ref": "../responses/412.json"
+    },
+    "500" : {
+      "$ref": "../responses/500.json"
+    },
+    "default" : {
+      "$ref": "../responses/default.json"
+    }
+  }
+}

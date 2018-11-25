@@ -1,0 +1,25 @@
+{
+  "description": "Authentication is required for accessing to the resource.",
+  "headers": {
+    "Content-Length": {
+      "description": "The length of the content.",
+      "schema": {
+        "type": "integer",
+        "format": "uint64"
+      }
+    }
+  },
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/error-envelop.json"
+      },
+      "example": {
+        "error": {
+          "code": "Unauthenticated",
+          "detail": "Authentication is required."
+        }
+      }
+    }
+  }
+}

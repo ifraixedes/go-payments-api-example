@@ -1,0 +1,10 @@
+{
+  "name": "If-Match",
+  "in": "header",
+  "description": "Performs the operation if the resource current numerical version matches with the one provided .",
+  "required": true,
+  "schema": {
+    "type": "integer",
+    "format": "uint64"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "page",
+  "in": "query",
+  "description": "The set of items of a list of results to request.",
+  "style": "deepObject",
+  "explode": true,
+  "schema": {
+    "title": "Page object",
+    "description": "the object contains the information to request a specific set of items from a list of results.\nEach endpoint can impose the limits about the maximum and minimum page's size.",
+    "type": "object",
+    "properties": {
+      "number": {
+        "title": "Page number",
+        "type": "integer",
+        "format": "uint64"
+      },
+      "size": {
+        "title": "Page size",
+        "type": "integer",
+        "format": "uint64"
+      }
+    }
+  },
+  "example": {
+    "number": 10,
+    "size": 25
+  }
+}

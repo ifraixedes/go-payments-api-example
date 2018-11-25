@@ -1,0 +1,13 @@
+{
+  "name": "paymentID",
+  "in": "path",
+  "description": "The ID of the payment to get",
+  "required": true,
+  "style": "label",
+  "schema": {
+    "title": "UUID",
+    "type": "string",
+    "pattern": "^[\\da-f]{8,8}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{12,12}$/i"
+  },
+  "example": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec43"
+}

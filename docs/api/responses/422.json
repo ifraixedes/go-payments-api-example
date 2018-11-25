@@ -1,0 +1,59 @@
+{
+  "description": "An invalid request query parameter or request body according the operation semantics.\nNote the application ignores any query parameter which isn't specified in the operation definition, hence, in such case it won't return any error",
+  "headers": {
+    "Content-Length": {
+      "description": "The length of the content.",
+      "schema": {
+        "type": "integer",
+        "format": "uint64"
+      }
+    }
+  },
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/error-envelop.json"
+      },
+      "examples": {
+        "invalid-query-parameter": {
+          "summary": "An invalid query parameter.",
+          "value": {
+            "error": {
+              "code": "InvalidFormatOrder",
+              "detail": "order isn't correctly formatted.",
+              "source": {
+                "parameter": "order"
+              }
+            }
+          }
+        },
+        "invalid-body": {
+          "summary": "The body is not as specified.",
+          "description": "The body doesn't obey the specification and the application will return the first error that it encounters on it, rather than doing a full examination of the body.",
+          "value": {
+            "error": {
+              "code": "InvalidRequiredSurname",
+              "detail": "Surname is required.",
+              "source": {
+                "pointer": "/surname"
+              }
+            }
+          }
+        },
+        "invalid-field-in-body": {
+          "summary": "The file of the body is out of range",
+          "description": "The contains a field which is out of range.",
+          "value": {
+            "error": {
+              "code": "InvalidOutRangeAge",
+              "detail": "Age is out of allowed range.",
+              "source": {
+                "pointer": "/children/0/age"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

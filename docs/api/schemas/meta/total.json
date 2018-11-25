@@ -1,0 +1,6 @@
+{
+  "type": "integer",
+  "title": "The total number of items",
+  "description": "The total number of items that a the server holds for the specified request.",
+  "format": "uint64"
+}

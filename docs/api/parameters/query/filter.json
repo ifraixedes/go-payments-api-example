@@ -1,0 +1,30 @@
+{
+  "name": "filter",
+  "in": "query",
+  "description": "Comma separated values which are the name of the item fields and values for filtering the list of items to return.",
+  "allowReserved": true,
+  "schema": {
+    "title": "Filter the collection of items",
+    "description": "Used for filtering the items of the collection and only returns the subset which matches the filter criteria.",
+    "type": "array",
+    "items": {
+      "description": "key value pairs separated by '='; for nested properties the '.' character is used in the keys for indicating the scope hierarchy.\nAll the fields are joined by a logical AND.\nValues must start with '=', '<' or '>' comparison operator, indicating 'equality', 'less than' and 'greater than', respectively.",
+      "type": "string",
+      "pattern": "/[a-z_][\\w_.]*=.+/i"
+    }
+  },
+  "examples": {
+    "simpleEquality": {
+      "summary": "Filter items by exact amount.",
+      "value": [ "amount==10" ]
+    },
+    "simpleGt": {
+      "summary": "Filter items by amounts above a of certain quantity.",
+      "value": [ "amount=>100" ]
+    },
+    "multiFilter": {
+      "summary": "Filter items by amount lower than certain quantity and type 'payment'.",
+      "value": [ "amount=<100", "type==payment" ]
+    }
+  }
+}

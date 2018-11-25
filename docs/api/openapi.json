@@ -1,0 +1,41 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Payment API Example",
+    "description": "An example of a payment API.\n\nNOTE:\n\n* The API specification doesn't specify all the HTTP status codes for the ones whose semantic is clearly specified in the RFC 7231, for example the 400, 411, etc.; many times if the application use any oft the well know existing HTTP servers, those responses will be automatically responded by it rather than the application hence, the format of the response cannot be ensured by the specification.\nOn the other hand there are others which, like the 404, which can be returned by some specific endpoints but by all, so they are present on the operation definition with a specific format, however such format isn't guarantee when it could be directly returned by the HTTP server, for example when a requested URL isn't matched by any of the specified operations.\n* On the other hand, the definitions of the operations only contain the most representative HTTP status codes, some others could be responded by any of them, for example 406; the ones which have some specific format can be found in the components/responses property of this specification.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://{host}:{port}/{basePath}",
+      "variables": {
+        "host": {
+          "default": "localhost"
+        },
+        "port": {
+          "default": "8000"
+        },
+        "basePath": {
+          "default": ""
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/payments": {
+      "summary": "Operations performed on set of payments.",
+      "$ref": "paths/payments.json"
+    },
+    "/payments/{paymentID}": {
+      "summary": "Operations performed on a payment.",
+      "$ref": "paths/payment.json"
+    }
+  },
+  "components": {
+    "responses": {
+      "406": {
+        "$ref": "responses/406.json"
+      }
+    }
+  }
+}
