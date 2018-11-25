@@ -1,0 +1,22 @@
+{
+  "name": "order",
+  "in": "query",
+  "description": "Comma separated values which are the name of the item fields to order the list of items to return.",
+  "allowReserved": true,
+  "schema": {
+    "title": "Specify order of a collection",
+    "description": "Name of the fields for specifying the order of the items of the collection received in the response. Each field is starts with '+' or '-', for indicating if the order is ascending or descending, followed by its name and each field is separated by ','.",
+    "type": "string",
+    "pattern": "/[+\\-][a-z_][\\w_.]+(,[+\\-][a-z_][\\w_.])*/i"
+  },
+  "examples": {
+    "singleField": {
+      "summary": "ascending order by amount.",
+      "value": "+amount"
+    },
+    "mutiField": {
+      "summary": "ascending order by amount and descending by create timestamp.",
+      "value": "+amount,-createAt"
+    }
+  }
+}

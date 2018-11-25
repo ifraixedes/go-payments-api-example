@@ -1,0 +1,9 @@
+{
+  "name": "Content-Type",
+  "in": "header",
+  "description": "The length of the content.",
+  "schema": {
+    "type": "integer",
+    "format": "uint64"
+  }
+}

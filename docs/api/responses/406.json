@@ -1,0 +1,28 @@
+{
+  "description": "Requested content type representation is not accepted.",
+  "headers": {
+    "Content-Length": {
+      "description": "The length of the content.",
+      "schema": {
+        "type": "integer",
+        "format": "uint64"
+      }
+    }
+  },
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/error-envelop.json"
+      },
+      "example": {
+        "error": {
+          "code": "UnavailableContentType",
+          "detail": "Any of the accepted content types are available.",
+          "meta": {
+            "acceptedContentTypes": ["application/vnd.payments.v1+json"]
+          }
+        }
+      }
+    }
+  }
+}

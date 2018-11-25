@@ -1,0 +1,25 @@
+{
+  "description": "Any HTTP status code not specified in a responses operation will always return this error response format.\nClients should report this error as bug because otherwise the HTTP status code should be defined in the operation responses.",
+  "headers": {
+    "Content-Length": {
+      "description": "The length of the content send/received",
+      "schema": {
+        "type": "integer",
+        "format": "uint64"
+      }
+    }
+  },
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/error-envelop.json"
+      },
+      "example": {
+        "error": {
+          "code": "UnexpectedError",
+          "detail": "An unexpected error has happened."
+        }
+      }
+    }
+  }
+}
