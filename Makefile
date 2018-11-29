@@ -1,4 +1,5 @@
 GOLANGCI_LINT_VERSION := 1.12.3
+GOLANGCI_LINT_BIN := $(realpath .bin/golangci-lint)
 
 define HELP_MSG
 Execute one of the following targets:
@@ -18,7 +19,7 @@ go-tools-install: .gti-golangci-lint ## Install Go tools
 
 .PHONY: lint
 lint: ## Lint the code
-	@.bin/golangci-lint run --enable-all
+	@cd payment && $(GOLANGCI_LINT_BIN) run --enable-all --exclude-use-default=false
 
 .PHONY: .go-tools-install-ci
 .go-tools-install-ci: .gti-golangci-lint
