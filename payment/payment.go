@@ -6,13 +6,17 @@ import (
 	"github.com/gofrs/uuid"
 )
 
-// Pymt is the type which represents all the information which a single payment
-// has.
+// Pymt contains all the information which a single payment has.
 type Pymt struct {
-	Type           string    `json:"type"`
-	ID             uuid.UUID `json:"id"`
-	Version        int       `json:"version"`
-	OrganisationID string    `json:"organisation_id"`
+	PymtUpsert
+	ID      uuid.UUID `json:"id"`
+	Version uint32    `json:"version"`
+}
+
+// PymtUpsert contains the information required to create or update a payment.
+type PymtUpsert struct {
+	Type           string `json:"type"`
+	OrganisationID string `json:"organisation_id"`
 	Attributes     struct {
 		Amount               *big.Float `json:"amount"`
 		Currency             string     `json:"currency"`

@@ -16,6 +16,12 @@ const (
 	ErrInvalidArgFilterLogicalOpNotExists
 	ErrInvalidArgFilterNodeEmpty
 	ErrInvalidArgFilterValue
+
+	ErrInvalidArgVersionMismatch
+
+	ErrNotFound
+
+	ErrUnexpectedStoreError
 )
 
 func (c code) String() string {
@@ -32,6 +38,12 @@ func (c code) String() string {
 		return "InvalidArgFilterNodeEmpty"
 	case ErrInvalidArgFilterValue:
 		return "InvalidArgFilterValue"
+	case ErrInvalidArgVersionMismatch:
+		return "InvalidArgVersionMismatch"
+	case ErrNotFound:
+		return "NotFound"
+	case ErrUnexpectedStoreError:
+		return "UnexpectedStoreError"
 	}
 
 	return ""
@@ -51,6 +63,12 @@ func (c code) Message() string {
 		return "The filter node cannot be an empty"
 	case ErrInvalidArgFilterValue:
 		return "The filter value isn't a valid one"
+	case ErrInvalidArgVersionMismatch:
+		return "The provided version doesn't match with the current one"
+	case ErrNotFound:
+		return "The entity was not found"
+	case ErrUnexpectedStoreError:
+		return "The store has returned an unexpected error"
 	}
 
 	return ""
