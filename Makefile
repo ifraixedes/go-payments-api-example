@@ -23,11 +23,11 @@ go-tools-install: .gti-golangci-lint ## Install Go tools
 
 .PHONY: lint
 lint: ## Lint the sources of all the packages contained in this repo
-	@cd payment && $(GOLANGCI_LINT_BIN) run --enable-all --exclude-use-default=false
+	@$(GOLANGCI_LINT_BIN) run --enable-all --exclude-use-default=false
 
 .PHONY: test
 test: ## Execute the tests in all the packages contained in this repo
-	@cd payment && go test $(TARGS) ./...
+	@go test $(TARGS) ./...
 
 .PHONY: ci
 ci: ## Simulate the same checks that the CI runs
