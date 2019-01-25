@@ -1,0 +1,27 @@
+go_import_path: go.fraixed.es/errors
+language: go
+
+matrix:
+  include:
+    - go: "1.11.x"
+      env: GO111MODULE=on LINT=true COVERAGE=true
+    - go: tip
+      env: GO111MODULE=on
+  allow_failures:
+    - go: tip
+      env: GO111MODULE=on
+
+before_install:
+  # Install CI tools
+  - make .go-tools-install-ci
+
+  # Install goveralls, Go integration for Coveralls.io.
+  - go get -u github.com/mattn/goveralls
+
+script:
+  - if [ "$LINT" = true ]; then make lint; fi
+  - if [ "$COVERAGE" = true ]; then make test TARGS="-v -covermode=count -coverprofile=profile.cov"; else make test TARGS="-v";  fi
+  - if [ "$COVERAGE" = true ]; then goveralls -coverprofile=profile.cov -service=travis-ci; fi
+
+notifications:
+  email: false
