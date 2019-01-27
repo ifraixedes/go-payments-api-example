@@ -13,6 +13,7 @@ import (
 //
 // All the methods can return, a part of their specific ones which are
 // documented on them, the following error codes:
+//
 // * ErrUnexpectedStoreError
 type Service interface {
 	// Create creates a new payment returning its ID.
@@ -31,6 +32,7 @@ type Service interface {
 	// only contains the fields indicated by s.
 	//
 	// The following error codes can be returned:
+	//
 	// * ErrNotFound
 	Get(ctx context.Context, id uuid.UUID, s Selection) (Pymt, error)
 
@@ -38,9 +40,10 @@ type Service interface {
 	// with version. The payment version is incremented if the update succeeds.
 	//
 	// The following error codes can be returned:
-	// * ErrInvalidArgVersionMismatch
-	//		When the version doesn't match with the current payment version for
-	//		avoiding to override the payment concurrently.
+	//
+	// * ErrInvalidArgVersionMismatch - When the version doesn't match with the
+	// current payment version for avoiding to override the payment concurrently.
+	//
 	// * ErrNotFound
 	Update(ctx context.Context, id uuid.UUID, version uint32, p PymtUpsert) error
 }

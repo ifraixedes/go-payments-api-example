@@ -11,6 +11,7 @@ const (
 )
 
 // Sort specifies the allowed fields for sorting a list of payments.
+//
 // The payment's fields which aren't present aren't allowed to be used for
 // sorting.
 type Sort struct {
