@@ -74,7 +74,8 @@ func (c code) Message() string {
 	return ""
 }
 
-// ErrMDArg creates a new  MD (metadata) from an function argument.
+// ErrMDArg creates a new metadata from an function argument which is related
+// with the error to create.
 func ErrMDArg(name string, val interface{}) errors.MD {
 	return errors.MD{
 		K: fmt.Sprintf("arg:%s", name),

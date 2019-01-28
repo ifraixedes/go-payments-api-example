@@ -49,10 +49,12 @@ type FilterLeaf interface {
 }
 
 // Filter is an abstraction of a specified filter over a set of different values.
+//
 // It represents a binary tree where when it's a leaf node, it contains the
 // comparison operator and value to apply, meanwhile when it isn't a left, it
 // contains the 2 children nodes (which are Filter) and the logical operator
 // applied between the both of them.
+//
 // You can see it as any boolean logical operation used in conditionals in the
 // majority of programming languages.
 type Filter struct {
@@ -82,6 +84,7 @@ func (f Filter) Leaf() FilterLeaf {
 
 // Nodes returns the operator applied over the 2 children nodes and those nodes
 // left and right.
+//
 // FilterLogical is an invalid value and the 2 filter will be of node type
 // NodeTypeEmpty, when f is not an NodeTypeNonLeaf.
 func (f Filter) Nodes() (FilterLogical, Filter, Filter) {
@@ -123,9 +126,11 @@ type FilterLeafID struct {
 // specified cmp and val.
 //
 // The following error codes can be returned (declared in errs sub package):
+//
 // * InvalidArgFilterCmpNotExists
-// * InvalidArgFilterCmpNotSupported
-//		when cmp isn't FilterCmpEqual nor FilterCmpNotEqual
+//
+// * InvalidArgFilterCmpNotSupported - when cmp isn't FilterCmpEqual nor
+// FilterCmpNotEqual
 func NewFilterByID(cmp FilterCmp, val uuid.UUID) (Filter, error) {
 	if err := validatepCmp(cmp); err != nil {
 		return Filter{}, err
@@ -162,11 +167,13 @@ type FilterLeafType struct {
 // val.
 //
 // The following error codes can be returned (declared in errs sub package):
+//
 // * InvalidArgFilterCmpNotExists
-// * InvalidArgFilterCmpNotSupported
-//			when cmp isn't FilterCmpEqual nor FilterCmpNotEqual
-// * InvalidArgFilterValue
-//			currently only "Payment" is valid value type
+//
+// * InvalidArgFilterCmpNotSupported - when cmp isn't FilterCmpEqual nor
+// FilterCmpNotEqual
+//
+// * InvalidArgFilterValue - currently only "Payment" is valid value type
 func NewFilterByType(cmp FilterCmp, val string) (Filter, error) {
 	if err := validatepCmp(cmp); err != nil {
 		return Filter{}, err
@@ -199,7 +206,9 @@ type FilterLeafAmount struct {
 // specified cmp and val.
 //
 // The following error codes can be returned (declared in errs sub package):
+//
 // * InvalidArgFilterCmpNotExists
+//
 // * InvalidArgFilterCmpNotSupported - when cmd is FilterCmpMatch
 func NewFilterByAmount(cmp FilterCmp, val float64) (Filter, error) {
 	var f, err = newFilterLeafFloat64(cmp, val)
@@ -214,6 +223,7 @@ func NewFilterByAmount(cmp FilterCmp, val float64) (Filter, error) {
 // It returns an error if f.IsSet returns false.
 //
 // The following error codes may be returned:
+//
 // * InvalidArgFilterLeafNoValSet
 func newFilterLeaf(l FilterLeaf) (Filter, error) {
 	if !l.IsSet() {
