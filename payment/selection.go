@@ -8,26 +8,5 @@ type Selection struct {
 	Type           bool
 	Version        bool
 	OrganisationID bool
-	Attributes     SelectionAttributes
-}
-
-// SelectionAttributes is the type of the Attributes field of the Selection type.
-type SelectionAttributes struct {
-	Amount               bool
-	Currency             bool
-	Reference            bool
-	EndToEndReference    bool
-	NumericReference     bool
-	PaymentID            bool
-	PaymentPurpose       bool
-	PaymentScheme        bool
-	PaymentType          bool
-	ProcessingDate       bool
-	SchemePaymentSubType bool
-	SchemePaymentType    bool
-	BeneficiaryParty     bool
-	DebtorParty          bool
-	SponsorParty         bool
-	ChargesInformation   bool
-	Fx                   bool
+	Attributes     bool
 }

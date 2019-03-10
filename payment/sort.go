@@ -24,19 +24,5 @@ type Sort struct {
 
 // SortAttributes is the type of the Attributes field of the Sort type.
 type SortAttributes struct {
-	Amount             SortDir
-	Currency           SortDir
-	Reference          SortDir
-	EndToEndReference  SortDir
-	NumericReference   SortDir
-	PaymentID          SortDir
-	ProcessingDate     SortDir
-	ChargesInformation SortChargesInformation
-}
-
-// SortChargesInformation is the type of the ChargesInformation field of the
-// SortAttributes type.
-type SortChargesInformation struct {
-	SenderChargesAmount   SortDir
-	ReceiverChargesAmount SortDir
+	Amount SortDir
 }
