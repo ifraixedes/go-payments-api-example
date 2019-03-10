@@ -1,4 +1,4 @@
-GOLANGCI_LINT_VERSION := 1.12.3
+GOLANGCI_LINT_VERSION := 1.15.0
 GOLANGCI_LINT_BIN := $(realpath .bin/golangci-lint)
 
 define HELP_MSG
