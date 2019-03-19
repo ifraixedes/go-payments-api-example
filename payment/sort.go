@@ -10,6 +10,11 @@ const (
 	SortDescending
 )
 
+// Valid returns true if s is a valid SortDir value, otherwise false
+func (s SortDir) Valid() bool {
+	return s == SortAscending || s == SortDescending
+}
+
 // Sort specifies the allowed fields for sorting a list of payments.
 //
 // The payment's fields which aren't present aren't allowed to be used for

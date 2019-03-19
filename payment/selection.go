@@ -10,3 +10,14 @@ type Selection struct {
 	OrgID      bool
 	Attributes bool
 }
+
+// SelectAll returns the value which indicates to retrieve all the fields of a
+// payment.
+func SelectAll() Selection {
+	return Selection{
+		Type:       true,
+		Version:    true,
+		OrgID:      true,
+		Attributes: true,
+	}
+}

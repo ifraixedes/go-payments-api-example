@@ -151,3 +151,15 @@ func ErrMDField(name string, val interface{}) errors.MD {
 		V: val,
 	}
 }
+
+// ErrMDFact creates a new metdata for a value which represent an important
+// fact which provide context to the error for the user/developer/ops when
+// reading the verbose version of the error.
+//
+// name should be short but meaninful to understand the value.
+func ErrMDFact(name string, val interface{}) errors.MD {
+	return errors.MD{
+		K: fmt.Sprintf("fact:%s", name),
+		V: val,
+	}
+}
