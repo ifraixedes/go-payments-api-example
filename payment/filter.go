@@ -145,7 +145,7 @@ func NewFilterByID(cmp FilterCmp, val uuid.UUID) (Filter, error) {
 		return Filter{}, errors.New(ErrInvalidArgFilterCmpNotSupported, ErrMDArg("cmp", cmp))
 	}
 
-	return newFilterLeaf(FilterLeafID{
+	return NewFilterFromLeaf(FilterLeafID{
 		val: val,
 		cmp: cmp,
 	})
@@ -197,7 +197,7 @@ func NewFilterByType(cmp FilterCmp, val string) (Filter, error) {
 		return Filter{}, err
 	}
 
-	return newFilterLeaf(FilterLeafType{f})
+	return NewFilterFromLeaf(FilterLeafType{f})
 }
 
 // FilterLeafAmount allows to filter payment by its amount filed.
@@ -219,16 +219,16 @@ func NewFilterByAmount(cmp FilterCmp, val float64) (Filter, error) {
 		return Filter{}, err
 	}
 
-	return newFilterLeaf(FilterLeafAmount{f})
+	return NewFilterFromLeaf(FilterLeafAmount{f})
 }
 
-// newFilterLeaf creates a Filter of NodeTypeLeaf.
+// NewFilterFromLeaf creates a Filter of NodeTypeLeaf.
 // It returns an error if f.IsSet returns false.
 //
 // The following error codes may be returned:
 //
 // * InvalidArgFilterLeafNoValSet
-func newFilterLeaf(l FilterLeaf) (Filter, error) {
+func NewFilterFromLeaf(l FilterLeaf) (Filter, error) {
 	if !l.IsSet() {
 		return Filter{}, errors.New(ErrInvalidArgFilterLeafNoValSet)
 	}

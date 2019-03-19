@@ -47,7 +47,7 @@ func ExampleFilter() {
 		filterSQL        string
 	)
 
-	for { // Iternatively in-order traversal of the filter (which is a binary tree)
+	for { // Iteratively in-order traversal of the filter (which is a binary tree)
 		if cf == nil {
 			var pn, ok = stk.Pop()
 			if !ok {
