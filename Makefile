@@ -30,9 +30,9 @@ test: ## Execute the tests in all the packages contained in this repo
 	@go test $(TARGS) ./...
 
 .PHONY: ci
-ci: ## Simulate the same checks that the CI runs
-	@make lint
-	@make test
+ci: ## Contains the set of checks that the CI runs (can be used for executing in local previous to push code)
+	@if [ "$$LINT" = true ]; then make lint; fi
+	@if [ "$$COVERAGE" = true ]; then make test TARGS="-v -covermode=count -coverprofile=profile.cov"; else make test TARGS="-v"; fi
 
 .PHONY: go-tools-install
 go-tools-install: .gti-golangci-lint ## Install Go tools

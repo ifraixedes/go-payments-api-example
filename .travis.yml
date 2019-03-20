@@ -1,11 +1,19 @@
 language: go
 
+go:
+  - 1.12.x
+  - tip
+
+env:
+  - GO111MODULE=on LINT=true COVERAGE=true
+  - GO111MODULE=on
+
 matrix:
-  include:
-    - go: "1.12.x"
-      env: GO111MODULE=on LINT=true COVERAGE=true
-    - go: tip
+  exclude:
+    - go: 1.12.x
       env: GO111MODULE=on
+    - go: tip
+      env: GO111MODULE=on LINT=true COVERAGE=true
   allow_failures:
     - go: tip
       env: GO111MODULE=on
@@ -18,8 +26,7 @@ before_install:
   - go get -u github.com/mattn/goveralls
 
 script:
-  - if [ "$LINT" = true ]; then make lint; fi
-  - if [ "$COVERAGE" = true ]; then make test TARGS="-v -covermode=count -coverprofile=profile.cov"; else make test TARGS="-v";  fi
+  - make ci
   - if [ "$COVERAGE" = true ]; then goveralls -coverprofile=profile.cov -service=travis-ci; fi
 
 notifications:
