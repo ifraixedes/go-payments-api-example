@@ -57,6 +57,8 @@ type FilterLeaf interface {
 //
 // You can see it as any boolean logical operation used in conditionals in the
 // majority of programming languages.
+//
+// The zero value is a noop filter.
 type Filter struct {
 	left  *Filter
 	right *Filter
@@ -64,7 +66,8 @@ type Filter struct {
 	op    FilterLogical
 }
 
-// NodeType returns the type of this node.
+// NodeType returns the type of this node. Zero value returns
+// FilterNodeTypeEmpty.
 func (f Filter) NodeType() FilterNodeType {
 	switch {
 	case f.op == filterLogicalNoop && f.l == nil:
@@ -142,7 +145,7 @@ func NewFilterByID(cmp FilterCmp, val uuid.UUID) (Filter, error) {
 		return Filter{}, errors.New(ErrInvalidArgFilterCmpNotSupported, ErrMDArg("cmp", cmp))
 	}
 
-	return newFilterLeaf(FilterLeafID{
+	return NewFilterFromLeaf(FilterLeafID{
 		val: val,
 		cmp: cmp,
 	})
@@ -194,7 +197,7 @@ func NewFilterByType(cmp FilterCmp, val string) (Filter, error) {
 		return Filter{}, err
 	}
 
-	return newFilterLeaf(FilterLeafType{f})
+	return NewFilterFromLeaf(FilterLeafType{f})
 }
 
 // FilterLeafAmount allows to filter payment by its amount filed.
@@ -216,16 +219,16 @@ func NewFilterByAmount(cmp FilterCmp, val float64) (Filter, error) {
 		return Filter{}, err
 	}
 
-	return newFilterLeaf(FilterLeafAmount{f})
+	return NewFilterFromLeaf(FilterLeafAmount{f})
 }
 
-// newFilterLeaf creates a Filter of NodeTypeLeaf.
+// NewFilterFromLeaf creates a Filter of NodeTypeLeaf.
 // It returns an error if f.IsSet returns false.
 //
 // The following error codes may be returned:
 //
 // * InvalidArgFilterLeafNoValSet
-func newFilterLeaf(l FilterLeaf) (Filter, error) {
+func NewFilterFromLeaf(l FilterLeaf) (Filter, error) {
 	if !l.IsSet() {
 		return Filter{}, errors.New(ErrInvalidArgFilterLeafNoValSet)
 	}

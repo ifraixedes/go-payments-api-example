@@ -5,8 +5,19 @@ package payment
 // Each file is a boolean, when it's true, the value is retrieved otherwise it
 // won't be.
 type Selection struct {
-	Type           bool
-	Version        bool
-	OrganisationID bool
-	Attributes     bool
+	Version    bool
+	Type       bool
+	OrgID      bool
+	Attributes bool
+}
+
+// SelectAll returns the value which indicates to retrieve all the fields of a
+// payment.
+func SelectAll() Selection {
+	return Selection{
+		Type:       true,
+		Version:    true,
+		OrgID:      true,
+		Attributes: true,
+	}
 }

@@ -10,16 +10,21 @@ const (
 	SortDescending
 )
 
+// Valid returns true if s is a valid SortDir value, otherwise false
+func (s SortDir) Valid() bool {
+	return s == SortAscending || s == SortDescending
+}
+
 // Sort specifies the allowed fields for sorting a list of payments.
 //
 // The payment's fields which aren't present aren't allowed to be used for
 // sorting.
 type Sort struct {
-	Type           SortDir
-	ID             SortDir
-	Version        SortDir
-	OrganisationID SortDir
-	Attributes     SortAttributes
+	Type       SortDir
+	ID         SortDir
+	Version    SortDir
+	OrgID      SortDir
+	Attributes SortAttributes
 }
 
 // SortAttributes is the type of the Attributes field of the Sort type.
