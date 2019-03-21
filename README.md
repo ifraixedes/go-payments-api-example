@@ -19,9 +19,18 @@ Implement, in Go, a small example of a payment RESTful API which allows to:
 
 ## Considerations
 
-The project will be used in the future of a base of experimentation for improving several topics, between some of them, API designs, Software Patterns, DDD (Domain Driven Development), modularity, simplicity.
+The project will be used in the future of a base of experimentation for improving several topics, between some of them, API designs, Software Patterns, modularity, simplicity.
 
 However all of those changes will be done through the time under my needs and curiosities and without any commitment and iterative in order to have have "releases".
+
+This example isn't intended for being in production because it is already known that it requires some improvements which will never been done, because this is just an example; in addition, in the sources you may find a `TODO: won't be implemented` to mark parts which exists because it clarifies how some feature/requirement should be done, however, such implementation won't be done.
+
+Following there is a incomplete list of improvements which should be done before using this implementation in a production system.
+
+* Add more input validations
+
+
+NOTE that some decisions have been made without having any specific requirement in terms of business domain, production environment, SLAs, etc., so they may look to you that those are improvements to be made, however, they are not because of the lack of such requirements, that's the reason because they aren't in the list and they will never be, others they aren't because as commented it's an incomplete list, because of the fact that I may forget or may not think about them. If you think that this list should contain some which aren't on it, feel free to send an issue or PR, but be aware that it could be rejected because they may not be improvements, they may be some of those decisions which were made.
 
 ## License
 
