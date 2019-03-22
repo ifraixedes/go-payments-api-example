@@ -18,7 +18,7 @@
     },
     "id": {
       "type": "string",
-      "pattern": "^[\\da-f]{8,8}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{12,12}$/i",
+      "pattern": "^[\\da-f]{8}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{12}$/i",
       "readOnly": true
     },
     "version": {
@@ -28,7 +28,7 @@
     },
     "organisation_id": {
       "type": "string",
-      "pattern": "^[\\da-f]{8,8}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{12,12}$/i"
+      "pattern": "^[\\da-f]{8}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{12}$/i"
     },
     "attributes": {
       "type": "object",
