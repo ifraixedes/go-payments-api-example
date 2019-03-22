@@ -5,7 +5,7 @@
       "description": "The length of the content send/received",
       "schema": {
         "type": "integer",
-        "format": "uint64"
+        "format": "int64"
       }
     }
   },

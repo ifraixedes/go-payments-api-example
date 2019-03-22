@@ -28,7 +28,7 @@
             "description": "The length of the content.",
             "schema": {
               "type": "integer",
-              "format": "uint64"
+              "format": "int64"
             }
           }
         },
@@ -101,7 +101,7 @@
             "description": "The length of the content.",
             "schema": {
               "type": "integer",
-              "format": "uint64"
+              "format": "int64"
             }
           }
         },
@@ -121,7 +121,7 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "pattern": "^[\\da-f]{8,8}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{4,4}-[\\da-f]{12,12}$/i"
+                      "pattern": "^[\\da-f]{8}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{12}$/i"
                     }
                   }
                 }

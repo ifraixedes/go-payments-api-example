@@ -12,12 +12,12 @@
       "number": {
         "title": "Page number",
         "type": "integer",
-        "format": "uint64"
+        "format": "int64"
       },
       "size": {
         "title": "Page size",
         "type": "integer",
-        "format": "uint64"
+        "format": "int64"
       }
     }
   },

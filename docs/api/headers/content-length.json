@@ -4,6 +4,6 @@
   "description": "The length of the content.",
   "schema": {
     "type": "integer",
-    "format": "uint64"
+    "format": "int64"
   }
 }
