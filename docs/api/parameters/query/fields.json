@@ -7,7 +7,7 @@
     "title": "Specify name of the fields of the items",
     "description": "Name of the fields of an item which belongs to the collection, for specifying that only them must be present on the response. Each field is separated by ','.",
     "type": "string",
-    "pattern": "/[a-z_][\\w_.]+(,[a-z_][\\w_.])*/i"
+    "pattern": "^[a-zA-Z_][\\w_.]+(,[a-zA-Z_][\\w_.])*$"
   },
   "examples": {
     "singleField": {

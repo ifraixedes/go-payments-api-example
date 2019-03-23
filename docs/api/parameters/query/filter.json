@@ -10,7 +10,7 @@
     "items": {
       "description": "key value pairs separated by '='; for nested properties the '.' character is used in the keys for indicating the scope hierarchy.\nAll the fields are joined by a logical AND.\nValues must start with '=', '<' or '>' comparison operator, indicating 'equality', 'less than' and 'greater than', respectively.",
       "type": "string",
-      "pattern": "/[a-z_][\\w_.]*=.+/i"
+      "pattern": "^[a-zA-Z_][\\w_.]*=.+$"
     }
   },
   "examples": {
