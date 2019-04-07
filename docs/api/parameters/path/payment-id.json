@@ -1,7 +1,7 @@
 {
   "name": "paymentID",
   "in": "path",
-  "description": "The ID of the payment to get",
+  "description": "A payment's ID",
   "required": true,
   "style": "label",
   "schema": {
